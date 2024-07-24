@@ -1,6 +1,5 @@
 //Pegando as informações do HTML para o JS (informações necessarias no ADD e no Limpar)
-let produtoSelecionado = document.querySelector('#produto');
-let quantidade = document.querySelector('#quantidade');
+let quantidade = document.querySelector('#quantidade').value;
 let listaProduto = document.querySelector('#lista-produtos');
 let total = document.querySelector('.carrinho__total');
 
@@ -12,30 +11,15 @@ function adicionar(){
     let novaSection = document.createElement('section');
     novaSection.className = 'carrinho__produtos__produto';
 
-    let valorProduto = 0;
-    let totalProduto = 0
-    let nomeProduto = ''
+    //pegando o nome e valor do produto dinamicamente
+    let produtoSelecionado = document.querySelector('#produto').value;
+    let nomeProduto = produtoSelecionado.split('-')[0];
+    let valorProduto = produtoSelecionado.split('R$')[1];
+    let totalProduto = valorProduto * quantidade;
 
-    //estrutura condicional que verifica qual produto da lista foi escolhido
-    if(produtoSelecionado.value == 'Fone de ouvido - R$100'){
-        nomeProduto = 'Fone de ouvido'
-        valorProduto = 100;
-        totalProduto = valorProduto * quantidade.value;
-        
-    }
-    else if(produtoSelecionado.value == 'Celular - R$1400'){
-        nomeProduto = 'Celular'
-        valorProduto = 1400;
-        totalProduto = valorProduto * quantidade.value;
-    }
-    else if(produtoSelecionado.value == 'Oculus VR - R$5000'){
-        nomeProduto = 'Oculus VR'
-        valorProduto = 5000;
-        totalProduto = valorProduto * quantidade.value;
-    }
 
     //Area que joga o item para a lista do carrinho, com as devidas informações
-    novaSection.innerHTML = `<span class="texto-azul">${quantidade.value}x</span> ${nomeProduto} <span class="texto-azul">R$${totalProduto}</span>`;
+    novaSection.innerHTML = `<span class="texto-azul">${quantidade}x</span> ${nomeProduto} <span class="texto-azul">R$${totalProduto}</span>`;
     listaProduto.appendChild(novaSection);
 
 
