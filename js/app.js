@@ -1,5 +1,4 @@
 //Pegando as informações do HTML para o JS (informações necessarias no ADD e no Limpar)
-let quantidade = document.querySelector('#quantidade').value;
 let listaProduto = document.querySelector('#lista-produtos');
 let total = document.querySelector('.carrinho__total');
 
@@ -11,7 +10,8 @@ function adicionar(){
     let novaSection = document.createElement('section');
     novaSection.className = 'carrinho__produtos__produto';
 
-    //pegando o nome e valor do produto dinamicamente
+    //pegando o nome e valor e a quantidade do produto dinamicamente
+    let quantidade = document.querySelector('#quantidade').value;
     let produtoSelecionado = document.querySelector('#produto').value;
     let nomeProduto = produtoSelecionado.split('-')[0];
     let valorProduto = produtoSelecionado.split('R$')[1];
